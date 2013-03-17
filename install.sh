@@ -1,20 +1,21 @@
-#https://github.com/tpope/vim-pathogen.git 
-#https://github.com/jiangmiao/auto-pairs.git 
-#https://github.com/vim-scripts/genutils.git 
-#https://github.com/vim-scripts/multiselect.git 
-#https://github.com/scrooloose/nerdtree.git 
-#https://github.com/msanders/snipmate.vim.git
-#https://github.com/vim-scripts/taglist.vim.git 
-#https://github.com/lepture/vim-javascript.git 
-#https://github.com/maksimr/vim-jsbeautify.git 
-#https://github.com/sickill/vim-monokai.git 
-#https://github.com/jistr/vim-nerdtree-tabs.git 
-#https://github.com/mattn/zencoding-vim.git git
-###
+plugins=(
+https://github.com/tpope/vim-pathogen.git 
+https://github.com/jiangmiao/auto-pairs.git 
+https://github.com/vim-scripts/genutils.git 
+https://github.com/vim-scripts/multiselect.git 
+https://github.com/scrooloose/nerdtree.git 
+https://github.com/msanders/snipmate.vim.git
+https://github.com/vim-scripts/taglist.vim.git 
+https://github.com/lepture/vim-javascript.git 
+https://github.com/maksimr/vim-jsbeautify.git 
+https://github.com/sickill/vim-monokai.git 
+https://github.com/jistr/vim-nerdtree-tabs.git 
+https://github.com/mattn/zencoding-vim.git
+)
 
-
-vimhomeDir=~/dev/temp/t/
+vimhomeDir=~/dev/t/
 vimrcUrl=https://raw.github.com/darkfe/vimconfigfast/master/_vimrc
+selfUrl=http://localhost:8000/install.sh
 bundleDir=${vimhomeDir}bundle/
 pathogenDir=${bundleDir}vim-pathogen/
 
@@ -24,7 +25,7 @@ else
     mkdir $vimhomeDir
 fi
 
-while read line
+for line in ${plugins[*]}
 do 
     if [ "$line" != "###" ]; then
 
@@ -45,10 +46,10 @@ do
     else
         break
     fi
-done < $0 
+done 
 
 if [ -d $pathogenDir ]; then
-   cp -r $pathogenDir/autoload $vimhome/autoload 
+   cp -r $pathogenDir/autoload $vimhomeDir/autoload 
    curl $vimrcUrl > $vimhomeDir.vimrc 
 else
     echo "[vim-pathogen] install fail, please check your network."
