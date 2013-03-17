@@ -400,11 +400,38 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-"打开行号显示
-set number
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => User Custom 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "初始化插件管理器
 call pathogen#infect()
+
+"打开行号显示
+set number
+
+"设置256色
+set t_Co=256
+
+"配置方案使用molokai
+colorscheme Monokai 
+let g:molokai_original = 1
+
+"关掉buf(我也不知道是什么玩意)
+au VimEnter * set buftype=""
+
+"TagList 开关
+noremap <silent> <F8> :TlistToggle<CR>
+"tagList 配置
+let g:Tlist_Use_Right_Window = 1
+let g:Tlist_Exit_OnlyWindow = 1
+let g:Tlist_Use_SingleClick = 1
+let g:Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Show_One_File=1
+let g:Tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function;v:variable;b:boolean;n:number'
+
+"进入vim时自动打开NerdTree
+autocmd vimenter * NERDTree
 
 "zencoding 配置
 let g:user_zen_expandabbr_key = '<c-e>'    "设置为ctrl+e展开
@@ -428,48 +455,6 @@ let g:user_zen_settings = {
 \  }
 \}
 
-
-"ctrlp 配置为 ctrl+p 打开
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-"JsBeautify根据不同语言类型绑定ctrl+f 格式化
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-" for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-
-"小工具函数-当filetype是javascript的时候按f5用nodejs运行这个文件
-func CompileRun()
-    exec "w"
-    if &filetype == 'javascript'
-        exec "!node ./%"
-    endif
-endfunc
-map <F5> :call CompileRun()<CR>
-
-"设置256色
-set t_Co=256
-"配置方案使用molokai
-colorscheme Monokai 
-let g:molokai_original = 1
-
-"关掉buf(我也不知道是什么玩意)
-au VimEnter * set buftype=""
-
-"TagList 开关
-noremap <silent> <F8> :TlistToggle<CR>
-"tagList 配置
-let g:Tlist_Use_Right_Window = 1
-let g:Tlist_Exit_OnlyWindow = 1
-let g:Tlist_Use_SingleClick = 1
-let g:Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Show_One_File=1
-let g:Tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function;v:variable;b:boolean;n:number'
-
-"进入vim时自动打开NerdTree
-autocmd vimenter * NERDTree
 "NerdTreeTabs 开关
 noremap <silent> <F9> :NERDTreeTabsToggle<CR>
 let g:NERDTreeWinSize = 25 
@@ -479,16 +464,8 @@ let NERDTreeMouseMode=2
 map <silent> <leader>vim :e ~/.vimrc<CR>
 map <silent> <leader>sh :e ~/.bashrc<CR>
 
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
+"切换paste mode
+set pastetoggle=<F10>
 
-command Svnup !svn up
-let g:session_autosave=1
-let g:session_autoload=1
-
-set pastetoggle=<F11>
-
-
-set tags=tags;
+"忘记干啥的了
 set autochdir
