@@ -13,9 +13,8 @@ https://github.com/jistr/vim-nerdtree-tabs.git
 https://github.com/mattn/zencoding-vim.git
 )
 
-vimhomeDir=~/dev/t/
+vimhomeDir=~/.vim/
 vimrcUrl=https://raw.github.com/darkfe/vimconfigfast/master/_vimrc
-selfUrl=http://localhost:8000/install.sh
 bundleDir=${vimhomeDir}bundle/
 pathogenDir=${bundleDir}vim-pathogen/
 
@@ -49,8 +48,19 @@ do
 done 
 
 if [ -d $pathogenDir ]; then
-   cp -r $pathogenDir/autoload $vimhomeDir/autoload 
-   curl $vimrcUrl > $vimhomeDir.vimrc 
+    cp -r $pathogenDir/autoload $vimhomeDir/autoload 
+
+    #backup old vimrc file
+    if [ -f ~/.vimrc  ]; then
+        if [ -d ~/.vimrcbak/ ]; then
+            echo >/dev/null
+        else
+            mkdir ~/.vimrcbak/
+        fi
+        ds=`date +%s`
+        cp ~/.vimrc ~/vimrcbak/.vimrc_$ds
+    fi
+    curl $vimrcUrl > ~/.vimrc 
 else
     echo "[vim-pathogen] install fail, please check your network."
 fi
