@@ -18,9 +18,7 @@ vimrcUrl=https://raw.github.com/darkfe/vimconfigfast/master/_vimrc
 bundleDir=${vimhomeDir}bundle/
 pathogenDir=${bundleDir}vim-pathogen/
 
-if [ -d $vimhomeDir ]; then
-    echo >/dev/null
-else
+if [ ! -d $vimhomeDir ]; then
     mkdir $vimhomeDir
 fi
 
@@ -51,10 +49,8 @@ if [ -d $pathogenDir ]; then
     cp -r $pathogenDir/autoload $vimhomeDir/autoload 
 
     #backup old vimrc file
-    if [ -f ~/.vimrc  ]; then
-        if [ -d ~/.vimrcbak/ ]; then
-            echo >/dev/null
-        else
+    if [ -f ~/.vimrc -a  ]; then
+        if [ ! -d ~/.vimrcbak/ ]; then
             mkdir ~/.vimrcbak/
         fi
         ds=`date +%s`
