@@ -1,5 +1,6 @@
 plugins=(
 https://github.com/tpope/vim-pathogen.git 
+https://github.com/Lokaltog/vim-powerline.git
 https://github.com/jiangmiao/auto-pairs.git 
 https://github.com/vim-scripts/genutils.git 
 https://github.com/vim-scripts/multiselect.git 

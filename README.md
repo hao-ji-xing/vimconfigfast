@@ -23,6 +23,7 @@ vimconfigfast 使用vim-pathogen来管理插件
 * https://github.com/sickill/vim-monokai.git 
 * https://github.com/jistr/vim-nerdtree-tabs.git 
 * https://github.com/mattn/zencoding-vim.git
+* https://github.com/Lokaltog/vim-powerline 
 
 并且使用这份vimrc文件
 
