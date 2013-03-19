@@ -38,3 +38,9 @@ vimconfigfast 使用vim-pathogen来管理插件
 monokai
 
 就是这样.
+
+TODO 
+
+* 判断本地是否安装ctags, 如果没装就不再安装taglist了
+* 对vimrc的备份策略要重新想一想
+
