@@ -41,6 +41,5 @@ monokai
 
 TODO 
 
-* 判断本地是否安装ctags, 如果没装就不再安装taglist了
 * 对vimrc的备份策略要重新想一想
 

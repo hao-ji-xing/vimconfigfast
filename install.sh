@@ -13,7 +13,7 @@ https://github.com/jistr/vim-nerdtree-tabs.git
 https://github.com/mattn/zencoding-vim.git
 )
 
-vimhomeDir=~/.vim/
+vimhomeDir=~/dev/test/
 vimrcUrl=https://raw.github.com/darkfe/vimconfigfast/master/_vimrc
 bundleDir=${vimhomeDir}bundle/
 pathogenDir=${bundleDir}vim-pathogen/
@@ -36,8 +36,17 @@ do
             git pull
             cd - >/dev/null
         else 
-            echo "[$repoName] plugin start install."
-            git clone $repoUrl $repoDir
+            if [ "$repoName" == 'taglist.vim' ];then
+                if type ctags >/dev/null 2>&1 ;then
+                    echo "[$repoName] plugin start install."
+                    git clone $repoUrl $repoDir
+                else
+                    echo "Cat't find 'ctags', stop install taglist.vim."
+                fi
+            else
+                echo "[$repoName] plugin start install."
+                git clone $repoUrl $repoDir
+            fi
         fi
 
     else
@@ -56,6 +65,7 @@ if [ -d $pathogenDir ]; then
         ds=`date +%s`
         cp ~/.vimrc ~/vimrcbak/.vimrc_$ds
     fi
+
     curl $vimrcUrl > ~/.vimrc 
 else
     echo "[vim-pathogen] install fail, please check your network."
