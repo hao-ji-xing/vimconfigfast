@@ -14,7 +14,7 @@ https://github.com/jistr/vim-nerdtree-tabs.git
 https://github.com/mattn/zencoding-vim.git
 )
 
-vimhomeDir=~/dev/test/
+vimhomeDir=~/.vim
 vimrcUrl=https://raw.github.com/darkfe/vimconfigfast/master/_vimrc
 bundleDir=${vimhomeDir}bundle/
 pathogenDir=${bundleDir}vim-pathogen/
